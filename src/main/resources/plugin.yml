@@ -1,0 +1,4 @@
+name: SafeSandDupers
+version: '${project.version}'
+main: com.gradyn.safesanddupers.SafeSandDupers
+api-version: 1.19

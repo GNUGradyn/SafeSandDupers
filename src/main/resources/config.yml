@@ -1,0 +1,5 @@
+world: "world"
+location:
+  x: 0
+  y: auto
+  z: 0
