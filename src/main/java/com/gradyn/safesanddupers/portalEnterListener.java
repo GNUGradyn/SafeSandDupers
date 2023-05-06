@@ -5,6 +5,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPortalEnterEvent;
@@ -20,6 +22,7 @@ public class portalEnterListener implements Listener {
         double y = 2032;
         if (SafeSandDupers.config.getString("location.y").toLowerCase().equals("auto")) {
             while (y > -2032) {
+                new Location(1, 1, 1)
                 Block block = new Location(
                         Bukkit.getWorld(SafeSandDupers.config.getString("world")),
                         SafeSandDupers.config.getDouble("location.x"),
@@ -39,6 +42,14 @@ public class portalEnterListener implements Listener {
             y = SafeSandDupers.config.getDouble("location.y");
         }
 
-
+        World world = Bukkit.getWorld(SafeSandDupers.config.getString("world"));
+        Location location = new Location(
+                world,
+                SafeSandDupers.config.getDouble("location.x"),
+                y,
+                SafeSandDupers.config.getDouble("location.z")
+        );
+        Material material = ((FallingBlock) event.getEntity()).getMaterial();
+        world.spawnFallingBlock(location, material, 0);
     }
 }
