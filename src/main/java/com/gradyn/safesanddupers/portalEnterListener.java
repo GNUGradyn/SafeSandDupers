@@ -22,7 +22,6 @@ public class portalEnterListener implements Listener {
         double y = 2032;
         if (SafeSandDupers.config.getString("location.y").toLowerCase().equals("auto")) {
             while (y > -2032) {
-                new Location(1, 1, 1)
                 Block block = new Location(
                         Bukkit.getWorld(SafeSandDupers.config.getString("world")),
                         SafeSandDupers.config.getDouble("location.x"),
@@ -50,6 +49,7 @@ public class portalEnterListener implements Listener {
                 SafeSandDupers.config.getDouble("location.z")
         );
         Material material = ((FallingBlock) event.getEntity()).getMaterial();
-        world.spawnFallingBlock(location, material, 0);
+        FallingBlock entity = world.spawnFallingBlock(location, material, (byte) 0);
+        entity.setVelocity(event.getEntity().getVelocity());
     }
 }
