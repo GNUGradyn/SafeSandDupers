@@ -18,6 +18,7 @@ public class portalEnterListener implements Listener {
     public final void onEntityPortalEnterEvent(EntityPortalEnterEvent event) {
         if (event.getLocation().getBlock().getType() != Material.END_PORTAL) return;
         if (event.getLocation().getWorld().getEnvironment() != World.Environment.THE_END) return;
+        if (!(event.getEntity() instanceof FallingBlock)) return;
 
         double y = 2032;
         if (SafeSandDupers.config.getString("location.y").toLowerCase().equals("auto")) {
