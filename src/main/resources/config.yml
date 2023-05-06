@@ -1,5 +1,9 @@
+# End to overworld
 world: "world"
 location:
   x: 0
   y: auto
   z: 0
+
+# Overworld to end
+world2: "world_the_end"
